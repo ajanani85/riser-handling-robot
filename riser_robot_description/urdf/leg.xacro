@@ -40,6 +40,23 @@
 		  </geometry>
 	  </visual>
   </link>
+  
+  <link name="${name}_lower_leg_link">
+		<pose>0 0 0 0 0 0</pose>
+		<xacro:cylinder_inertial mass="${holder_weight}" radius="${holder_radius}" length="${holder_length}"/>
+		<collision>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+			<geometry>
+		  	<cylinder length="${holder_length}" radius="${holder_radius}"/>
+			</geometry>
+		</collision>
+		<visual>
+			<origin rpy="0 0 0" xyz="0 0 0"/>
+		  <geometry>
+		  	<cylinder length="${holder_length}" radius="${holder_radius}"/>
+		  </geometry>
+	  </visual>
+  </link>
 	
 	<!-- JOINTS -->
 	<joint name="${name}_leg_joint" type="fixed">
@@ -51,6 +68,12 @@
 	<joint name="${name}_upper_pipe_joint" type="fixed">
 			<child link="${name}_upper_pipe"/>
 			<parent link="${name}_leg_link"/>
+			<origin xyz="0 -${holder_radius/2 + pipe_length/2} 0" rpy="-${pi/2} 0 0"/>
+	</joint>
+	
+	<joint name="${name}_lower_leg_joint" type="fixed">
+			<child link="${name}_lower_leg_link"/>
+			<parent link="${name}_upper_pipe"/>
 			<origin xyz="0 -${holder_radius/2 + pipe_length/2} 0" rpy="-${pi/2} 0 0"/>
 	</joint>
 	

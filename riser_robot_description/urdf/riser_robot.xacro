@@ -23,7 +23,7 @@
   <xacro:property name="holder_radius" value="${chassis_height/2}" />
   <xacro:property name="holder_length" value="${chassis_height/2 + 0.05}" />
   <xacro:property name="pipe_radius" value="0.05" />
-  <xacro:property name="pipe_length" value="0.3" />
+  <xacro:property name="pipe_length" value="0.4" />
  
   <gazebo reference="base_link">
     <material>Gazebo/Orange</material>
